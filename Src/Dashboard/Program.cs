@@ -20,9 +20,7 @@ namespace Tellurium.VisualAssertion.Dashboard
                     wsc.ConstructUsing(() => new WebServer());
                     wsc.WhenStarted(server =>
                     {
-                        var myThread = new Thread(new ThreadStart(server.Run));
-                        myThread.IsBackground = true;  // This line will prevent thread from working after service stop.
-                        myThread.Start();
+                       server.Run();
                     });
                     wsc.WhenStopped(ws => ws.Dispose());
                 });

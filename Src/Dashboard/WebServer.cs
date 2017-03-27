@@ -19,7 +19,7 @@ namespace Tellurium.VisualAssertion.Dashboard
                 .UseApplicationInsights()
                 .Build();
 
-            host.Run();
+            host.Start();
         }
 
         public void Dispose()
