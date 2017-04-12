@@ -10,10 +10,10 @@
   {
     "outputFileName": "wwwroot/lib/lib.js",
     "inputFiles": [
-      "../packages/jQuery.3.1.1/Content/Scripts/jquery-3.1.1.min.js",
-      "../packages/jQuery.UI.Combined.1.11.4/Content/Scripts/jquery-ui-1.11.4.min.js",
-      "../packages/bootstrap.3.0.0/Content/Scripts/bootstrap.min.js",
-      "../packages/Microsoft.jQuery.Unobtrusive.Ajax.3.2.3/Content/Scripts/jquery.unobtrusive-ajax.min.js"
+      "node_modules/jquery/dist/jquery.min.js",
+      "node_modules/jquery-ui-dist/jquery-ui.min.js",
+      "node_modules/bootstrap/dist/js/bootstrap.min.js",
+      "node_modules/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"
     ]
   },
   {
