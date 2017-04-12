@@ -8,7 +8,15 @@ namespace Tellurium.VisualAssertion.Dashboard
     {
         public static void Main(string[] args)
         {
+#if DEBUG
+            using (var server = new WebServer())
+            {
+                server.Run(consoleMode:true);
+                Console.ReadKey();
+            }
+#else
             InstallDashboardService();
+#endif
         }
 
         private static void InstallDashboardService()

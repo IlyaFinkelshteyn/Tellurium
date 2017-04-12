@@ -8,7 +8,7 @@ namespace Tellurium.VisualAssertion.Dashboard
     {
         private IWebHost host;
 
-        public void Run()
+        public void Run(bool consoleMode=false)
         {
             host = new WebHostBuilder()
                 .UseKestrel()
@@ -19,7 +19,14 @@ namespace Tellurium.VisualAssertion.Dashboard
                 .UseApplicationInsights()
                 .Build();
 
-            host.Start();
+            if (consoleMode)
+            {
+                host.Run();
+            }
+            else
+            {
+                host.Start();
+            }
         }
 
         public void Dispose()

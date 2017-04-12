@@ -3,15 +3,22 @@
 [
   {
     "outputFileName": "wwwroot/css/site.min.css",
-    // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
       "wwwroot/css/site.css"
     ]
+  },  
+  {
+    "outputFileName": "wwwroot/lib/lib.js",
+    "inputFiles": [
+      "../packages/jQuery.3.1.1/Content/Scripts/jquery-3.1.1.min.js",
+      "../packages/jQuery.UI.Combined.1.11.4/Content/Scripts/jquery-ui-1.11.4.min.js",
+      "../packages/bootstrap.3.0.0/Content/Scripts/bootstrap.min.js",
+      "../packages/Microsoft.jQuery.Unobtrusive.Ajax.3.2.3/Content/Scripts/jquery.unobtrusive-ajax.min.js"
+    ]
   },
   {
-    "outputFileName": "wwwroot/js/site.min.js",
+    "outputFileName": "wwwroot/js/site.js",
     "inputFiles": [
-      "wwwroot/js/site.js",
       "wwwroot/js/jquery-proxy.js",
       "wwwroot/js/jquery-ui.modern-unobtrusive.js",
       "wwwroot/widgets/remoteexpander.js",

@@ -1,9 +1,16 @@
 ﻿(function ($) {
     "use strict";
 
+    /**
+     * Extract widget options from DOM element
+     * @param {string} widgetName
+     * @param {HTMLElement} element
+     *
+     * @returns {object}
+     */
     function getWidgetOptions(widgetName, element) {
         var options = {};
-        var optionPrefix = "data-ui-" + widgetName + "-";
+        var optionPrefix = ("data-ui-" + widgetName + "-").toLowerCase();
         Array.prototype.forEach.call(element.attributes, function(attr) {
             if (attr.specified == false || attr.name.indexOf(optionPrefix) !== 0) {
                 return;
@@ -17,10 +24,10 @@
     }
 
     $.ui.modernUnobtrusive = {
-        /// <summary>
-        /// Wires up jQuery UI unobtrusively based on data-* attributes for the passed element and its children.
-        /// </summary>
-        /// <param name="context">A DOM Element, Document, or jQuery to use as context</param>
+        /**
+         * Wires up jQuery UI unobtrusively based on data-* attributes for the passed element and its children.
+         * @param {jQuery|HTMLElement} context A DOM Element, Document, or jQuery to use as context
+         */
         parse: function (context) {
             $("[data-ui-fn]", context).each(function () {
                 $.ui.modernUnobtrusive.parseElement(this);
@@ -29,10 +36,11 @@
                 $.ui.modernUnobtrusive.parseElement($(context));
             }
         },
-        /// <summary>
-        /// Wires up jQuery UI unobtrusively on a single element.
-        /// </summary>
-        /// <param name="el">A DOM Element, selector or jQuery collection.</param>
+
+        /**
+         * Wires up jQuery UI unobtrusively on a single element.
+         * @param {jQuery|HTMLElement} el A DOM Element, selector or jQuery collection.
+         */
         parseElement: function (el) {
             var $el = $(el);
             var element = $el[0];
@@ -44,7 +52,7 @@
                     if ($el.data(widgetName) !== undefined) {
                         uiFn.call($el, 'destroy');
                     }
-                    var options = getWidgetOptions(widgetName, element)
+                    var options = getWidgetOptions(widgetName, element);
                     uiFn.call($el, options);
                 }
             });
