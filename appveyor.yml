@@ -1,0 +1,40 @@
+version: 1.0.3.32{build}
+pull_requests:
+  do_not_increment_build_number: true
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+before_build:
+- cmd: >-
+    dotnet restore src
+
+    cd .\Src\Dashboard\
+
+    npm install
+
+    cd ../../
+build:
+  publish_wap: true
+  verbosity: minimal
+before_package:
+- cmd: dotnet publish .\src\Dashboard\Dashboard.csproj -c Release -o .\bin\xxx --framework net462
+after_build:
+- ps: >-
+    $version = "$($env:APPVEYOR_BUILD_VERSION)"
+
+    $config="Release"
+
+
+
+    .\Nuget\nuget pack .\Src\MvcPages\MvcPages.csproj.nuspec -NoPackageAnalysis -verbosity detailed -o ./ -Version $version -p Configuration=$config
+
+    nuget pack .\Src\VisualAssertions\VisualAssertions.csproj.nuspec -NoPackageAnalysis -verbosity detailed -o ./ -Version $version -p Configuration=$config
+artifacts:
+- path: ./Tellurium.MvcPages.*.nupkg
+- path: ./Tellurium.VisualAssertions.*.nupkg
