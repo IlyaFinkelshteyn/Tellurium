@@ -38,3 +38,6 @@ after_build:
 artifacts:
 - path: ./Tellurium.MvcPages.*.nupkg
 - path: ./Tellurium.VisualAssertions.*.nupkg
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
